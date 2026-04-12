@@ -1,23 +1,25 @@
-# Valores do investimento e juros de rendimento
-Valor_inicial = float(input("Qual o valor inicial ?: "))
-Aporte_mes = float(input("Quantos R$ mensais será o aporte ?: "))
-Juros_ano = float(input("Qual o juros Anual ?: "))
-Meses_investindo = int(input("quantos meses de investimento ?: "))
-Juros_Mes = float((Juros_ano)/12)/100
-##
+#variáveis
+aporte_inicial = float(input("informe o valor do depósito: "))
+aporte_mensal = float(input("informe o valor do aporte mensal: "))
+taxa = float(input("informe a taxa de juros mensal: "))
+tempo = int(input("informe o tempo em meses da aplicação: "))
+taxa = taxa / 100
+x = 0
 
-mes = 1
-ano = Valor_inicial*Juros_Mes+Valor_inicial
-
-while mes < Meses_investindo:
-    ano= ano*Juros_Mes+ano+Aporte_mes
-    mes += 1
-
-ValorInvestido = Meses_investindo*Aporte_mes+Valor_inicial
-Juros_total = ano-ValorInvestido
-    
-    
-print ("Em",Meses_investindo,"mes(es) de investimento voce terá",ano,"R$")  
-print ("o valor investido em 24 meses é de",ValorInvestido,"e o juros é de",Juros_total)
+#calculo dos juros compostos + aporte mensal
+print("o aporte inicial foi",aporte_inicial)
+while x < tempo:
+    aporte_inicial = aporte_inicial + aporte_mensal
+    total = aporte_inicial + aporte_inicial * taxa * (x + 1)
+    print("Mês", x + 1, ": R$", total)
+    x = x + 1
+juros = total - aporte_inicial
 
 
+
+print("aporte inicial",aporte_inicial)
+print (juros)
+
+
+print("Os juros acumulados em", tempo,"meses serão de R$",juros)
+print("O valor total da aplicação será de R$", total)
